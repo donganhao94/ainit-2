@@ -598,6 +598,15 @@
       .footer_right > img {
         max-width: 334px;
       }
+      #footer a {
+        color: #fff;
+        text-decoration: none;
+        margin-left: 4px;
+        margin-right: 4px;
+      }
+      #footer a:hover {
+        text-decoration: underline;
+      }
     </style>
     <style>
       @media (max-width: 992px) {
@@ -696,6 +705,26 @@
         .footer_right {
           width: 100%;
         }
+      }
+    </style>
+    <style>
+      #scrollToTop {
+        position: fixed;
+        right: 40px;
+        bottom: 40px;
+        border-radius: 50%;
+        background-color: #d0b48f;
+        cursor: pointer;
+        width: 44px;
+        height: 44px;
+        display: none;
+        align-items: center;
+        justify-content: center;
+      }
+      #scrollToTop > svg {
+        width: 20px;
+        height: 20px;
+        display: block;
       }
     </style>
   </head>
@@ -984,7 +1013,7 @@
                 Giao dịch ưu tiên tại chi nhánh và trung tâm VPBank Diamond trên
                 toàn quốc
               </li>
-              <li>Hotline ưu tiên 247 1800545415</li>
+              <li>Hotline ưu tiên 1800545415</li>
             </ul>
           </div>
           <div class="benefit_item">
@@ -1060,7 +1089,8 @@
                 ></path>
               </g>
             </svg>
-            VPBank: 1900 545415 | VPBank Diamond: 1800 545415
+            VPBank: <a href="tel:1900545415"> 1900 545415 </a> | VPBank Diamond:
+            <a href="tel:1800545415"> 1800 545415</a>
           </div>
           <div>
             <svg
@@ -1089,7 +1119,9 @@
                 ></path>
               </g>
             </svg>
-            diamond247@vpbank.com.vn
+            <a href="mailto:diamond247@vpbank.com.vn"
+              >diamond247@vpbank.com.vn</a
+            >
           </div>
           <div>
             <svg
@@ -1183,7 +1215,12 @@
                 ></path>
               </g>
             </svg>
-            diamond.vpbank.com.vn
+            <a
+              href="https://diamond.vpbank.com.vn"
+              rel="noreferrer"
+              target="_blank"
+              >diamond.vpbank.com.vn</a
+            >
           </div>
         </div>
         <div class="footer_right">
@@ -1194,5 +1231,32 @@
         </div>
       </div>
     </footer>
+    <div id="scrollToTop">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 20 20"
+        fill="currentColor"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z"
+          clip-rule="evenodd"
+        ></path>
+      </svg>
+    </div>
+    <script>
+      window.addEventListener("scroll", function scroll() {
+        if (window.scrollY > 500) {
+          document.getElementById("scrollToTop").style.display = "flex";
+        } else {
+          document.getElementById("scrollToTop").style.display = "none";
+        }
+      });
+      document
+        .getElementById("scrollToTop")
+        .addEventListener("click", function click(e) {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+    </script>
   </body>
 </html>
