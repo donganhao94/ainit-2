@@ -287,7 +287,7 @@
           wf_31b811e0c2b84062aceee935e, orig_svngotham;
       }
 
-      .gift1_right_box > * {
+      .gift1_right_gift {
         flex: 1;
       }
 
@@ -816,15 +816,158 @@
         cursor: pointer;
         width: 44px;
         height: 44px;
-        display: none;
+        display: flex;
         align-items: center;
         justify-content: center;
+        z-index: 99;
+        opacity: 0;
+        transition: opacity 0.5s;
+        pointer-events: none;
       }
 
       #scrollToTop > svg {
         width: 20px;
         height: 20px;
         display: block;
+      }
+
+      #scrollToTop.active {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      @keyframes leftToRight {
+        0% {
+          transform: translateX(-50%);
+        }
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes rightToLeft {
+        0% {
+          transform: translateX(50%);
+        }
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes bottomToTop {
+        0% {
+          transform: translateY(100%);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes rotateY {
+        0% {
+          transform: rotateY(90deg);
+        }
+        100% {
+          opacity: 1;
+          transform: rotateY(0);
+        }
+      }
+
+      @keyframes scale {
+        0% {
+          transform: scale(0);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      .animation {
+        opacity: 0;
+        animation-duration: 0.8s;
+        animation-timing-function: ease-out;
+        animation-fill-mode: forwards;
+      }
+
+      .leftToRight.animation.active {
+        animation-name: leftToRight;
+      }
+      .rightToLeft.animation.active {
+        animation-name: rightToLeft;
+      }
+      .bottomToTop.animation.active {
+        animation-name: bottomToTop;
+      }
+      .rotateY.animation.active {
+        animation-name: rotateY;
+      }
+      .scale.animation.active {
+        animation-name: scale;
+      }
+      .leftCenter {
+        transform-origin: left center;
+      }
+      .leftTop {
+        transform-origin: left top;
+      }
+      .rightTop {
+        transform-origin: right top;
+      }
+      .animation_elastic {
+        animation-timing-function: linear(
+          0 0%,
+          0 2.27%,
+          0.02 4.53%,
+          0.04 6.8%,
+          0.06 9.07%,
+          0.1 11.33%,
+          0.14 13.6%,
+          0.25 18.15%,
+          0.39 22.7%,
+          0.56 27.25%,
+          0.77 31.8%,
+          1 36.35%,
+          0.89 40.9%,
+          0.85 43.18%,
+          0.81 45.45%,
+          0.79 47.72%,
+          0.77 50%,
+          0.75 52.27%,
+          0.75 54.55%,
+          0.75 56.82%,
+          0.77 59.1%,
+          0.79 61.38%,
+          0.81 63.65%,
+          0.85 65.93%,
+          0.89 68.2%,
+          1 72.7%,
+          0.97 74.98%,
+          0.95 77.25%,
+          0.94 79.53%,
+          0.94 81.8%,
+          0.94 84.08%,
+          0.95 86.35%,
+          0.97 88.63%,
+          1 90.9%,
+          0.99 93.18%,
+          0.98 95.45%,
+          0.99 97.73%,
+          1 100%
+        );
+      }
+      .delay {
+        animation-delay: 0.3s;
+      }
+      .delay2 {
+        animation-delay: 0.3s;
+      }
+      .hidden,
+      section {
+        overflow: hidden;
       }
     </style>
   </head>
@@ -843,29 +986,29 @@
     <main>
       <section class="banner">
         <img
-          class="banner_left"
+          class="banner_left animation leftToRight delay2"
           src="https://static.wixstatic.com/media/f4b1be_1e4f915417e64373a3e7d39f95cadad1~mv2.png/v1/fill/w_148,h_1331,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/f4b1be_1e4f915417e64373a3e7d39f95cadad1~mv2.png"
           alt="banner left"
         />
         <div class="container">
           <div class="banner_center">
             <img
-              class="banner_center_img1"
+              class="banner_center_img1 animation leftToRight"
               src="https://static.wixstatic.com/media/f4b1be_a6be5c06b1ab4150a23ed9591c981b6b~mv2.png/v1/fill/w_876,h_158,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/tag-04.png"
               alt="banner center"
             />
             <img
-              class="banner_center_img2"
+              class="banner_center_img2 animation rightToLeft delay"
               src="https://static.wixstatic.com/media/f4b1be_0254ad0c1cd0477f9f0b219d040bc0c3~mv2.png/v1/fill/w_876,h_141,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/f4b1be_0254ad0c1cd0477f9f0b219d040bc0c3~mv2.png"
               alt="banner center"
             />
-            <div>
+            <div class="animation leftToRight delay2">
               Khám phá bộ đặc quyền từ dịch vụ Ngân hàng Ưu Tiên VPBank Diamond
               dành cho vận động viên VPBank Hanoi International Marathon 2023!
             </div>
           </div>
         </div>
-        <div class="banner_right">
+        <div class="banner_right animation scale rightTop delay2">
           <img
             src="https://static.wixstatic.com/media/f4b1be_1c8bc9466cf943aba7361eb827e8ae9d~mv2.png/v1/fill/w_720,h_760,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/nguoi-03.png"
             alt="banner right"
@@ -873,7 +1016,7 @@
         </div>
       </section>
       <section class="intro">
-        <div class="intro_center">
+        <div class="intro_center animation bottomToTop">
           <div>
             Lời đầu tiên, cảm ơn Quý Khách đã lựa chọn đồng hành cùng giải chạy
             VPBank Hanoi International Marathon 2023!
@@ -898,18 +1041,24 @@
       <section class="gift1">
         <div class="container">
           <div class="gift1_left">
-            <div class="gift1_left_text1">Khởi động quyền năng</div>
+            <div class="gift1_left_text1 animation leftToRight">
+              Khởi động quyền năng
+            </div>
             <div class="gift1_left_divider"></div>
-            <div class="gift1_left_text2">Bộ Race Kit đặc biệt</div>
+            <div class="gift1_left_text2 animation leftToRight">
+              Bộ Race Kit đặc biệt
+            </div>
           </div>
           <div class="gift1_right">
-            <div class="gift1_right_intro">
+            <div class="gift1_right_intro animation rightToLeft">
               Bên cạnh bộ race kit tiêu chuẩn của giải chạy, Quý Khách còn được
               nhận thêm 01 phần quà đặc biệt từ VPBank Diamond:
             </div>
-            <div class="gift1_right_name">VPBank Diamond Race Kit</div>
-            <div class="gift1_right_box">
-              <div>
+            <div class="gift1_right_name animation rightToLeft">
+              VPBank Diamond Race Kit
+            </div>
+            <div class="gift1_right_box hidden">
+              <div class="gift1_right_gift animation bottomToTop">
                 <div>Bình thể thao LocknLock</div>
                 <img
                   class="img1"
@@ -917,7 +1066,7 @@
                   alt="Bình thể thao LocknLock"
                 />
               </div>
-              <div>
+              <div class="gift1_right_gift animation bottomToTop">
                 <div>Gối chữ U</div>
                 <img
                   class="img2"
@@ -926,10 +1075,10 @@
                 />
               </div>
             </div>
-            <div class="gift1_right_note">
-              ​Khi Quý Khách là Khách hàng Ưu Tiên tính đến ngày 2/10/2023.
+            <div class="gift1_right_note animation rightToLeft">
+              Khi Quý Khách là Khách hàng Ưu Tiên tính đến ngày 2/10/2023.
             </div>
-            <div class="gift1_right_note">
+            <div class="gift1_right_note animation rightToLeft">
               Quà tặng sẽ được gửi đến Quý Khách ngay tại sự kiện Expo ngày
               6-7/10/2023.
             </div>
@@ -938,34 +1087,36 @@
       </section>
       <section class="guide">
         <div class="guide_content">
-          <div class="guide_title">HƯỚNG DẪN NHẬN QUÀ</div>
+          <div class="guide_title animation scale leftTop animation_elastic">
+            HƯỚNG DẪN NHẬN QUÀ
+          </div>
           <div class="guide_divider"></div>
           <ul>
-            <li>
+            <li class="animation rotateY leftCenter">
               <span>01</span>
               Quý khách có mặt tại Quảng trường Đông Kinh Nghĩa Thục, Quận Hoàn
               Kiếm, Hà Nội để nhận BIB, áo và Race Kit tiêu chuẩn
             </li>
-            <li>
+            <li class="animation rotateY leftCenter">
               <span>02</span>
               Quý khách xuất trình QR được BTC gửi đến email đăng ký tại quầy
               Thông tin
             </li>
-            <li>
+            <li class="animation rotateY leftCenter">
               <span>03</span>
               Quý khách được hướng dẫn vào từng khu vực của từng cự ly đăng ký
             </li>
-            <li>
+            <li class="animation rotateY leftCenter">
               <span>04</span>
               TNV sẽ cấp phát BIB, Race Kit & Quà tặng từ VPBank Diamond (nếu đủ
               điều kiện) theo các dữ liệu được cung cấp
             </li>
-            <li>
+            <li class="animation rotateY leftCenter">
               <span>05</span>
               Quý khách để lại thông tin để chủ động đổi áo (nếu có nhu cầu) tại
               quầy đổi áo
             </li>
-            <li>
+            <li class="animation rotateY leftCenter">
               <span>06</span>
               Quý khách tới quầy check BIB để kiểm tra hoạt động của chiptime
               tại BIB.
@@ -976,26 +1127,31 @@
       <section class="gift2">
         <div class="container">
           <div class="gift2_left">
-            <div class="gift2_left_title">Thể thao sành điệu</div>
-            <div>
+            <div class="gift2_left_title animation leftToRight">
+              Thể thao sành điệu
+            </div>
+            <div class="animation leftToRight">
               Trên mỗi bước chạy quyền năng tại VPBank Diamond, Quý Khách lại có
               thêm nhiều trải nghiệm đặc quyền cùng những quà tặng thể thao cực
               hấp dẫn:
             </div>
             <div class="gift2_left_item">
-              <strong>Loa Bluetooth Usams US-YC011</strong>
+              <strong class="animation scale"
+                >Loa Bluetooth Usams US-YC011</strong
+              >
             </div>
             <div class="gift2_left_m_img">
               <img
+                class="animation scale"
                 src="https://static.wixstatic.com/media/f4b1be_e09c2f886c2546b2a3a72498aaf20e83~mv2.png/v1/fill/w_587,h_612,al_c,lg_1,q_85,enc_auto/f4b1be_e09c2f886c2546b2a3a72498aaf20e83~mv2.png"
                 alt="item"
               />
             </div>
-            <div>
+            <div class="animation leftToRight">
               Khi Quý Khách định danh phân hạng Diamond trong thời gian từ nay
               đến 31/12/2023
             </div>
-            <div class="gift2_left_note">
+            <div class="gift2_left_note animation leftToRight">
               <b>Điều kiện đạt phân hạng Diamond:</b> Tổng tài sản bình quân
               tháng từ 01 đến 05 tỷ VND; hoặc số dư trên tài khoản thanh toán
               bình quân tháng từ 150 triệu VND đến dưới 500 triệu VND
@@ -1003,6 +1159,7 @@
           </div>
           <div class="gift2_right">
             <img
+              class="animation scale animation_elastic"
               src="https://static.wixstatic.com/media/f4b1be_e09c2f886c2546b2a3a72498aaf20e83~mv2.png/v1/fill/w_587,h_612,al_c,lg_1,q_85,enc_auto/f4b1be_e09c2f886c2546b2a3a72498aaf20e83~mv2.png"
               alt="item"
             />
@@ -1012,14 +1169,18 @@
       <section class="gift3">
         <div class="container">
           <div class="gift3_left">
-            <div class="gift3_mask gift3_mask1">
+            <div
+              class="gift3_mask gift3_mask1 animation scale animation_elastic leftTop"
+            >
               <img
                 src="https://static.wixstatic.com/media/f4b1be_6d4b1858204d48ee84a89e6cb72a0a6b~mv2.png/v1/crop/x_82,y_0,w_518,h_542/fill/w_394,h_411,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/image%20(1).png"
                 alt="Sạc dự phòng Usams US-CD184"
               />
             </div>
             <div class="gift3_mask2_right">
-              <div class="gift3_mask gift3_mask2">
+              <div
+                class="gift3_mask gift3_mask2 animation scale animation_elastic leftTop"
+              >
                 <img
                   src="https://static.wixstatic.com/media/f4b1be_e9e9756a8b6841a9bc7504bc4c7ed10f~mv2.png/v1/crop/x_0,y_0,w_956,h_1000/fill/w_393,h_411,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/image.png"
                   alt="Sạc dự phòng Usams US-CD184"
@@ -1028,35 +1189,45 @@
             </div>
           </div>
           <div class="gift3_right">
-            <div class="gift3_right_title">Thể thao dã ngoại</div>
-            <div>
+            <div class="gift3_right_title animation rightToLeft">
+              Thể thao dã ngoại
+            </div>
+            <div class="animation rightToLeft">
               Trên mỗi bước chạy quyền năng tại VPBank Diamond, Quý Khách lại có
               thêm những trải nghiệm đặc quyền, cùng những quà tặng thể thao cực
               hấp dẫn:
             </div>
             <div class="gift3_right_item">
-              <strong>Sạc dự phòng Usams US-CD184</strong>
+              <strong class="animation scale leftCenter"
+                >Sạc dự phòng Usams US-CD184</strong
+              >
             </div>
-            <div class="gift3_mask gift3_mask1 gift3_only_mobile">
+            <div
+              class="gift3_mask gift3_mask1 gift3_only_mobile animation scale animation_elastic leftTop"
+            >
               <img
                 src="https://static.wixstatic.com/media/f4b1be_6d4b1858204d48ee84a89e6cb72a0a6b~mv2.png/v1/crop/x_82,y_0,w_518,h_542/fill/w_394,h_411,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/image%20(1).png"
                 alt="Sạc dự phòng Usams US-CD184"
               />
             </div>
             <div class="gift3_right_item">
-              <strong>Bình giữ nhiệt LocknLock</strong>
+              <strong class="animation scale leftCenter"
+                >Bình giữ nhiệt LocknLock</strong
+              >
             </div>
-            <div class="gift3_mask gift3_mask2 gift3_only_mobile">
+            <div
+              class="gift3_mask gift3_mask2 gift3_only_mobile animation scale animation_elastic leftTop"
+            >
               <img
                 src="https://static.wixstatic.com/media/f4b1be_e9e9756a8b6841a9bc7504bc4c7ed10f~mv2.png/v1/crop/x_0,y_0,w_956,h_1000/fill/w_393,h_411,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/image.png"
                 alt="Sạc dự phòng Usams US-CD184"
               />
             </div>
-            <div>
+            <div class="animation rightToLeft">
               Khi Quý Khách định danh phân hạng Diamond Elite trong thời gian từ
               nay đến 31/12/2023
             </div>
-            <div class="gift3_right_note">
+            <div class="gift3_right_note animation rightToLeft">
               <b>Điều kiện đạt phân hạng Diamond Elite:</b> Tổng tài sản bình
               quân tháng từ 05 tỷ VND; hoặc số dư trên tài khoản thanh toán bình
               quân tháng từ 500 triệu VND
@@ -1067,12 +1238,12 @@
       <section class="gift4">
         <div class="container">
           <div class="gift4_left">
-            <div>
+            <div class="animation leftToRight">
               <div class="gift4_left_title">Trọn bộ đặc quyền</div>
               <div class="gift4_left_bank">VPBank Diamond</div>
             </div>
           </div>
-          <div class="gift4_right gift4_left">
+          <div class="gift4_right gift4_left animation rightToLeft">
             Không chỉ dừng lại ở các phần quà tặng vượt trội, khi tham gia Bước
             Chạy Quyền Năng, Quý khách còn sở hữu chuỗi trải nghiệm tài chính và
             phi tài chính đẳng cấp dành riêng Quý hội viên VPBank Diamond và
@@ -1082,64 +1253,72 @@
       </section>
       <section class="benefit">
         <div class="container">
-          <div class="benefit_item">
-            <img
-              src="https://static.wixstatic.com/media/f4b1be_ee4e22f5c8774bd9b19c1c68a0a5eda7~mv2.png/v1/fill/w_43,h_38,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/f4b1be_ee4e22f5c8774bd9b19c1c68a0a5eda7~mv2.png"
-              alt="benefit"
-            />
-            <div class="benefit_title">TÀI CHÍNH VƯỢT TRỘI</div>
-            <ul>
-              <li>
-                Thẻ ghi nợ hoàn tiền không giới hạn, đến 1,2% mọi chi tiêu
-              </li>
-              <li>Ưu đãi tài khoản số đẹp đến 500 triệu đồng</li>
-              <li>
-                Gói Ngân hàng số cao cấp, hạn mức chuyển tiền đến 15 tỷ
-                đồng/ngày
-              </li>
-              <li>Biểu phí & lãi suất riêng biệt với nhiều ưu đãi</li>
-            </ul>
+          <div class="hidden">
+            <div class="benefit_item animation leftToRight">
+              <img
+                src="https://static.wixstatic.com/media/f4b1be_ee4e22f5c8774bd9b19c1c68a0a5eda7~mv2.png/v1/fill/w_43,h_38,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/f4b1be_ee4e22f5c8774bd9b19c1c68a0a5eda7~mv2.png"
+                alt="benefit"
+              />
+              <div class="benefit_title">TÀI CHÍNH VƯỢT TRỘI</div>
+              <ul>
+                <li>
+                  Thẻ ghi nợ hoàn tiền không giới hạn, đến 1,2% mọi chi tiêu
+                </li>
+                <li>Ưu đãi tài khoản số đẹp đến 500 triệu đồng</li>
+                <li>
+                  Gói Ngân hàng số cao cấp, hạn mức chuyển tiền đến 15 tỷ
+                  đồng/ngày
+                </li>
+                <li>Biểu phí & lãi suất riêng biệt với nhiều ưu đãi</li>
+              </ul>
+            </div>
           </div>
-          <div class="benefit_item">
-            <img
-              src="https://static.wixstatic.com/media/f4b1be_ee4e22f5c8774bd9b19c1c68a0a5eda7~mv2.png/v1/fill/w_43,h_38,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/f4b1be_ee4e22f5c8774bd9b19c1c68a0a5eda7~mv2.png"
-              alt="benefit"
-            />
-            <div class="benefit_title">CHĂM SÓC ƯU TIÊN</div>
-            <ul>
-              <li>
-                Chăm sóc chuyên biệt bởi Chuyên viên Quan hệ Khách hàng Ưu Tiên
-              </li>
-              <li>
-                Giao dịch ưu tiên tại chi nhánh và trung tâm VPBank Diamond trên
-                toàn quốc
-              </li>
-              <li>Hotline ưu tiên 1800545415</li>
-            </ul>
+          <div class="hidden">
+            <div class="benefit_item animation leftToRight">
+              <img
+                src="https://static.wixstatic.com/media/f4b1be_ee4e22f5c8774bd9b19c1c68a0a5eda7~mv2.png/v1/fill/w_43,h_38,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/f4b1be_ee4e22f5c8774bd9b19c1c68a0a5eda7~mv2.png"
+                alt="benefit"
+              />
+              <div class="benefit_title">CHĂM SÓC ƯU TIÊN</div>
+              <ul>
+                <li>
+                  Chăm sóc chuyên biệt bởi Chuyên viên Quan hệ Khách hàng Ưu
+                  Tiên
+                </li>
+                <li>
+                  Giao dịch ưu tiên tại chi nhánh và trung tâm VPBank Diamond
+                  trên toàn quốc
+                </li>
+                <li>Hotline ưu tiên 1800545415</li>
+              </ul>
+            </div>
           </div>
-          <div class="benefit_item">
-            <img
-              src="https://static.wixstatic.com/media/f4b1be_ee4e22f5c8774bd9b19c1c68a0a5eda7~mv2.png/v1/fill/w_43,h_38,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/f4b1be_ee4e22f5c8774bd9b19c1c68a0a5eda7~mv2.png"
-              alt="benefit"
-            />
-            <div class="benefit_title">ĐẶC QUYỀN ĐẲNG CẤP</div>
-            <ul>
-              <li>Quyền lợi hội viên VPBank Diamond cho người thân</li>
-              <li>Dịch vụ phòng chờ sân bay VPBank Diamond</li>
-              <li>
-                Đặc quyền Diamond Loyalty tích điểm LynkiD đổi quà mọi giao dịch
-              </li>
-              <li>
-                Đặc quyền Vị Thế Kim Cương: Chăm sóc sức khỏe - Ẩm thực - Nghỉ
-                dưỡng 5 sao - Golf
-              </li>
-            </ul>
+          <div class="hidden">
+            <div class="benefit_item animation leftToRight">
+              <img
+                src="https://static.wixstatic.com/media/f4b1be_ee4e22f5c8774bd9b19c1c68a0a5eda7~mv2.png/v1/fill/w_43,h_38,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/f4b1be_ee4e22f5c8774bd9b19c1c68a0a5eda7~mv2.png"
+                alt="benefit"
+              />
+              <div class="benefit_title">ĐẶC QUYỀN ĐẲNG CẤP</div>
+              <ul>
+                <li>Quyền lợi hội viên VPBank Diamond cho người thân</li>
+                <li>Dịch vụ phòng chờ sân bay VPBank Diamond</li>
+                <li>
+                  Đặc quyền Diamond Loyalty tích điểm LynkiD đổi quà mọi giao
+                  dịch
+                </li>
+                <li>
+                  Đặc quyền Vị Thế Kim Cương: Chăm sóc sức khỏe - Ẩm thực - Nghỉ
+                  dưỡng 5 sao - Golf
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
       <section class="regulation">
-        <div class="regulation_title">NHẬN TƯ VẤN</div>
-        <div>
+        <div class="regulation_title animation bottomToTop">NHẬN TƯ VẤN</div>
+        <div class="animation scale" style="animation-delay: 0.5s">
           <a
             class="regulation_button"
             href="https://forms.office.com/Pages/ResponsePage.aspx?id=tV4i_jZvRkC6R5IutMW03rBof3LzCBtJj4hL1A1d-2hUNzJaUTdBN0gwS0M1TkJFV0VHMDdaQjBQOC4u"
@@ -1149,7 +1328,7 @@
           >
         </div>
         <div class="regulation_divider"></div>
-        <div>
+        <div class="animation bottomToTop">
           <a
             class="regulation_doc"
             href="https://diamond.vpbank.com.vn/sites/default/files/files/Th%E1%BB%83%20l%E1%BB%87%20ch%C6%B0%C6%A1ng%20tr%C3%ACnh%20Qu%C3%A0%20t%E1%BA%B7ng%20VPIM.pdf"
@@ -1352,18 +1531,36 @@
       </svg>
     </div>
     <script>
+      const scrollToTop = document.getElementById("scrollToTop");
+      let lastScrollTop = 0;
       window.addEventListener("scroll", function scroll() {
-        if (window.scrollY > 500) {
-          document.getElementById("scrollToTop").style.display = "flex";
+        const currentScrollTop =
+          window.pageYOffset || document.documentElement.scrollTop;
+        if (currentScrollTop > lastScrollTop) {
+          scrollToTop.classList.remove("active");
         } else {
-          document.getElementById("scrollToTop").style.display = "none";
+          if (window.scrollY > 500) {
+            scrollToTop.classList.add("active");
+          } else {
+            scrollToTop.classList.remove("active");
+          }
         }
+        lastScrollTop = currentScrollTop;
       });
-      document
-        .getElementById("scrollToTop")
-        .addEventListener("click", function click(e) {
-          window.scrollTo({ top: 0, behavior: "smooth" });
+      scrollToTop.addEventListener("click", function click() {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+      const animationList = document.querySelectorAll(".animation");
+      function scrollAnimation() {
+        animationList.forEach((item) => {
+          const position = item.getBoundingClientRect();
+          if (position.top < window.innerHeight && position.bottom >= 0) {
+            item.classList.add("active");
+          }
         });
+      }
+      window.addEventListener("load", scrollAnimation);
+      window.addEventListener("scroll", scrollAnimation);
     </script>
   </body>
 </html>
